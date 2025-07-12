@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Dynamic Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+
+                <!-- Left: Logo -->
+                <div class="flex-shrink-0 text-xl font-bold text-blue-600">
+                    Career Academy
+                </div>
+
+                <!-- Center: Nav Links -->
+                <div class="hidden md:flex space-x-6 text-gray-700">
+                    <a href="#" class="hover:text-blue-500">Home</a>
+                    <a href="#" class="hover:text-blue-500">About</a>
+                    <a href="#" class="hover:text-blue-500">Contact</a>
+                </div>
+
+                <!-- Right: User (JS populated) -->
+                <div id="navbar-user" class="flex items-center space-x-2">
+                    <!-- Dynamic content inserted here -->
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-btn" class="text-gray-600 focus:outline-none">
+                        ☰
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Links -->
+            <div id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 py-2 text-gray-700">
+                <a href="#" class="px-4 py-2 hover:text-blue-500">Home</a>
+                <a href="#" class="px-4 py-2 hover:text-blue-500">About</a>
+                <a href="#" class="px-4 py-2 hover:text-blue-500">Contact</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <script>
+        // Sample dynamic user data (simulate API/user session)
+        const user = {
+            name: "Arati Chanda",
+            avatar: "https://i.pravatar.cc/40?u=arati@example.com"
+        };
+
+        // Inject user into navbar
+        const userContainer = document.getElementById("navbar-user");
+
+        const avatar = document.createElement("img");
+        avatar.src = user.avatar;
+        avatar.alt = "User avatar";
+        avatar.className = "w-8 h-8 rounded-full object-cover";
+
+        const name = document.createElement("span");
+        name.textContent = user.name;
+        name.className = "hidden sm:inline-block text-sm font-medium text-gray-700";
+
+        userContainer.appendChild(name);
+        userContainer.appendChild(avatar);
+
+        // Mobile menu toggle
+        const btn = document.getElementById("mobile-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        btn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+</body>
+
+</html>
